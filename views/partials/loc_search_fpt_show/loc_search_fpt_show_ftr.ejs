@@ -1,0 +1,43 @@
+<script src="/scripts/jquery.js"></script>
+<script src="/scripts/bootstrap.js"></script>
+<script>
+  url_to_get = $('#api_url').text();
+  $.ajax({
+      url: url_to_get,
+      type: 'GET',
+      success: function (data) {
+        $('#loc_show_pt_load').hide();
+        // console.log(data.data.timings);
+        // console.log(typeof(data.data.timings));
+
+        var table = '<table class="table table-striped">';
+        Object.entries(data.data.timings).forEach(entry => {
+          var time = entry[1].toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+          if (time.length > 1) { // If time format correct
+            time = time.slice(1);  // Remove full string match value
+            time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+            time[0] = +time[0] % 12 || 12; // Adjust hours
+          }
+          time = time.join(''); // return adjusted time or original string
+
+          table = table + "<tr><td>" + entry[0] + "</td><td style='text-align:right'>" + time + "</td></tr>";
+          
+        });//forEach ends
+        table = table + '</table>';
+        $('#add_table').html(table);
+
+
+        
+      },//success function ends
+      error: function (data) {
+        alert('something wrong! Please Try again.');
+      },
+      timeout: 10000  // in miliseconds
+    });//ajax ends  
+
+
+</script>
+</body>
+
+</html>

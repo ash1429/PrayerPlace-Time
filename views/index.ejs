@@ -1,0 +1,36 @@
+<% include ./partials/index/indexheader %>
+
+<div class="container show_HeadContain">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="text_center">Welcome</h1>
+      <p class="text_center">This is a simple web site to find and create Prayer places and Prayer Times</p>
+    </div>
+  </header>
+
+  <div>
+    <form method="get" action="">
+      <input type="submit" class="btn btn-lg btn-default homepageBtns" 
+      value="Creat a Prayer Place" id="createPpBtn">
+    </form>
+  </div>
+  
+  <div>
+    <form method="get" action="">
+      <input type="submit" class="btn btn-lg btn-default homepageBtns" 
+      value="Find a Prayer Place" id="findPpBtn">
+    </form>
+  </div>
+
+  <div>
+    <form method="get" action="/loc_fpt">
+      <input type="submit" class="btn btn-lg btn-default homepageBtns" 
+      value="Find Prayer Times" id="findPtBtn" >
+    </form>
+  </div>
+
+
+</div>
+
+
+<% include ./partials/index/indexfooter %>

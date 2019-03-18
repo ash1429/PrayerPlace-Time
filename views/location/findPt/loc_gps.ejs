@@ -1,0 +1,56 @@
+<% include ../../partials/default/header %>
+  <div class="container show_HeadContain">
+    <h2 class="text_center">Location</h2>
+    <p style="margin-top: 20px; display: none; color: green; text-align: center" id='loc_gps_load'>Loading...</p>
+    <p style="margin-top: 20px; display: none; color: red;" id='err_msg'></p>
+
+  </div>
+
+    <div class="container" style="display: none" id="gps_result">
+
+      <div style="max-width: 50%; margin: 0 auto" id="location_values">
+    
+        <!-- Suburb/Village/Colony -->
+<!--         <div class="form-group">
+          <label for="suburb">Suburb/Village/Colony</label>
+          <input type="text" class="form-control" name="location[suburb]" id="suburb" value="" placeholder="" required>
+        </div>
+ -->        
+          <!-- City -->
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" name="location[City]" id="city" value="" placeholder="" required>
+        </div>
+    
+        <!-- State/Division -->
+        <div class="form-group">
+          <label for="State">State/Division</label>
+          <input type="text" class="form-control" name="location[State]" id="state" value="" required>
+        </div>
+    
+        <!-- Country -->
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input type="text" class="form-control" name="location[country]" id="country" value="" required>
+        </div>
+      </div>
+
+      <form action="<%=current_url%>/show_pt" method="GET" style="max-width: 50%; margin: 0 auto">
+        
+        <input type="hidden" value="" name="api_url" id="api_url" />
+        <input type="hidden" value="" name="display_name" id="display_name" />
+        <input type="hidden" value="" name="date" id="date" />
+    
+        <input type="submit" class="btn btn-primary btn-lg btn-block new_btnSubmit" value="Confirm">
+      </form>
+    </div>
+
+    <div class="container" style="max-width: 50%; margin: 0 auto">
+        <p id="wrong_location" style="color: red;display: none; text-align: center">
+          Location Wrong?
+          <a href="/loc_fpt/loc_search_fpt" id="search_by_city_button">Search by City</a>
+        </p>
+    </div>
+<p hidden id="current_url"><%=current_url%></p>
+
+<% include ../../partials/loc_gps_fpt/loc_gps_fpt_ftr %>

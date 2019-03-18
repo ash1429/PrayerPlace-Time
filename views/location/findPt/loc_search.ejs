@@ -1,0 +1,35 @@
+<% include ../../partials/loc_search_fpt/loc_search_fpt_header %>
+<div class="container show_HeadContain">
+  <h2 class="text_center">Search By City Name</h2>
+</div>
+
+<p hidden id="current_url"><%=current_url%></p>
+
+<div class="container">
+  <div style="margin-top: 20px;">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search" name="search" id="loc_search_fpt_textbox" autofocus>
+      <div class="input-group-btn">
+        <button class="btn btn-default" id="loc_search_fpt_btn">search</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="container">
+  <h4 style="display:none" id="result_h4">Results:</h4>
+</div>
+
+<div class="container" id="add_loc_search_fpt">
+  
+</div>
+
+<div class="container" style="max-width: 50%; margin: 0 auto">
+  <p id="cant_find" style="color: red;display: none; text-align: center; margin-top: 40px">
+    Can't find?
+    <a href="/loc_fpt/loc_gps_fpt" id="search_by_city_button">Try GPS</a>
+  </p>
+</div>
+
+<% include ../../partials/loc_search_fpt/loc_search_fpt_footer %>

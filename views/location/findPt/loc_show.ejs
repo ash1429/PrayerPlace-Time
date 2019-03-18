@@ -1,0 +1,14 @@
+<% include ../../partials/loc_search_fpt_show/loc_search_fpt_show_hdr %>
+
+<div class="container show_HeadContain">
+  <h2 class="text_center">Prayer Times at <%=obj.display_name%></h2>
+  <p class="text-center">Date: <%=obj.date%>.</p>
+  <p class="text_center" style="color:green" id="loc_show_pt_load">Loading...</p>
+</div>
+
+<p hidden id="api_url"><%=obj.api_url%></p>
+
+<div class="container" id="add_table" style="max-width: 30%; margin-top: 30px">
+</div>
+
+<% include ../../partials/loc_search_fpt_show/loc_search_fpt_show_ftr %>

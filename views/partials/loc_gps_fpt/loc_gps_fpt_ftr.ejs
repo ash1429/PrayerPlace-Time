@@ -1,0 +1,83 @@
+<script src="/scripts/jquery.js"></script>
+<script src="/scripts/bootstrap.js"></script>
+<script>
+  function resetlocation() {
+
+    $('#err_msg').text("");
+    // $('#suburb').val("");
+    $('#city').val("");
+    $('#state').val("");
+    $('#country').val("");
+  };
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 8000, /*in ms */
+    maximumAge: 0
+  };
+
+  function success(position) {
+
+    $.get("https://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.coords.latitude + "&lon=" + position.coords.longitude, function (data) {
+
+      if (data.address.city) {
+        $('#city').val(data.address.city);
+        $("#city").prop('disabled', true);
+
+      }
+
+      if (data.address.state) {
+        $('#state').val(data.address.state);
+        $("#state").prop('disabled', true);
+      }
+
+      if (data.address.country) {
+        $('#country').val(data.address.country);
+        $("#country").prop('disabled', true);
+      }
+
+      var currentdate = new Date();
+      var dd = currentdate.getDate();
+      var mm = currentdate.getMonth() + 1;
+      var yy = currentdate.getFullYear();
+      var date = dd + "-" + mm + "-" + yy;
+
+      // var url_action = $('#current_url').text() + "/show_pt";
+      var url_to_pass = "http://api.aladhan.com/v1/timings/" + date + "?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude + "&method=2";
+      var display_name = data.display_name;
+
+      // console.log(date);
+      // console.log(url_to_pass);
+      // console.log(display_name);
+
+      $('#date').val(date);
+      $('#api_url').val(url_to_pass);
+      $('#display_name').val(display_name);
+      
+
+      $('#loc_gps_load').hide();
+      $('#gps_result').show();
+      // $('#wrong_location').text("Location Wrong?");
+      $('#wrong_location').show();
+      $('#search_by_city_button').show();
+
+    });//$.get ends
+  }//sucess function ends
+
+  function error(err) {
+    $('#loc_gps_load').hide();
+    alert('something wrong! Please check your net connection and try again');
+    // $('#err_msg').text(err.message);
+    // $('#err_msg').show();
+  }
+  resetlocation();
+  if (navigator.geolocation) {
+    $('#loc_gps_load').show();
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }
+
+
+</script>
+
+</body>
+
+</html>

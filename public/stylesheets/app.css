@@ -1,0 +1,127 @@
+/* body{
+  background: burlywood;
+} */
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.thumbnail img{
+  width: 100%;
+}
+
+.thumbnail{
+  padding: 0px;
+}
+
+.caption-full{
+  padding: 10px;
+}
+
+.campgorounds_HeadContain{
+  margin-top: 80px;
+}
+
+.show_HeadContain{
+  margin-top: 80px;
+  max-width: 80%;
+}
+
+hr{
+  border-color: black;
+}
+
+.landing_HeadContain{
+  margin-top: 50px;
+}
+
+.new_HeadContain{
+  margin: 80px auto;
+  max-width: 800px;
+}
+
+.new_h1{
+  text-align: center;
+}
+
+.text_center{
+  text-align: center;
+}
+
+.new_Form{
+  max-width: 400px;
+  margin: 0 auto;
+}
+.new_btnSubmit{
+  margin-bottom: 10px;
+}
+
+
+
+.div_row_owned{
+  margin-bottom: 10%;
+}
+
+.post_index{
+  max-width: 80%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+
+.post_status_publish{
+  background-color:#8dec11;
+  min-width: 70px;
+  max-width: 70px;
+  padding: 5px 0;
+  color: white;
+  text-align: center;
+}
+
+.post_status_draft{
+  background-color:#ec9411;
+  min-width: 70px;
+  max-width: 70px;
+  padding: 5px 0;
+  color: white;
+  text-align: center;
+}
+
+.post_status_personal{
+  background-color:#3e41ab;
+  min-width: 80px;
+  max-width: 80px;
+  padding: 5px 0;
+  color: white;
+  text-align: center;
+}
+
+/* Editing for the project */
+.create_pp_form{
+  margin: 30px;
+}
+
+.homepageBtns{
+  display: block; 
+  margin: 0 auto;
+  width: 250px;
+  margin-top:40px;
+  text-align: center;
+
+}
+
+.fpt_loc_opt_btns{
+  display: block; 
+  margin: 0 auto;
+  width: 250px;
+  margin-top:60px;
+  text-align: center;
+}
+
+.loc_search_fpt_btns{
+  display: block; 
+  margin-top:40px;
+  text-align: center;
+
+}
