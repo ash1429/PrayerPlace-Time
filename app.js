@@ -17,7 +17,7 @@ var logout = require('./routes/logout');
 var auth = require('./auth');
 
 //set up db
-const url = 'mongodb://localhost:27017/prayerPlace';
+const url = 'mongodb://localhost:27017/pp';
 mongoose.connect(url, { useNewUrlParser: true }, function (err) {
   if (!err) {
     console.log("connected to db");
