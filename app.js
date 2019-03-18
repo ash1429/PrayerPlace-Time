@@ -8,6 +8,7 @@ var express = require('express'),
 
 var index = require('./routes/index');
 var loc_fpt = require('./routes/loc_fpt');
+var loc_cpp = require('./routes/loc_cpp');
 
 //set up db
 const url = 'mongodb://localhost:27017/prayerPlace';
@@ -25,9 +26,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
+//to check a user is logged in or not
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 //routing routers
 app.use("/", index);
 app.use("/loc_fpt", loc_fpt);
+app.use("/loc_cpp", loc_cpp);
 
 app.listen(3000, () => {
   console.log("Server is running");

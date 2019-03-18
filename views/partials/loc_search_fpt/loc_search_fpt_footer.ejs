@@ -5,10 +5,6 @@
   $('#loc_search_fpt_btn').click(function(){
 
     var input_txt = $('#loc_search_fpt_textbox').val();
-    $('#loc_search_fpt_textbox').val("Searching...");
-    $('#loc_search_fpt_textbox').prop('disabled', true);
-    $('#loc_search_fpt_btn').prop('disabled', true);
-
     // $('#searching_loc_fpt').show();
     
     // console.log(input_txt);
@@ -17,6 +13,10 @@
       alert('please input city name');
     }
     else if(input_txt.length > 0){
+      $('#loc_search_fpt_textbox').val("Searching...");
+      $('#loc_search_fpt_textbox').prop('disabled', true);
+      $('#loc_search_fpt_btn').prop('disabled', true);
+
       var url_to_get = "https://nominatim.openstreetmap.org/search?q=" + input_txt + "&format=json";
       $.ajax({
         url: url_to_get,
@@ -56,7 +56,7 @@
 
         },//success function ends
         error: function (data) {
-          alert('something wrong! Please Try again.');
+          alert('something wrong! Please check you your net connection and try again.');
         },
         timeout: 10000  // in miliseconds
       });//ajax ends
