@@ -1,0 +1,177 @@
+<% include ../partials/default/header %>
+
+<div class="container show_HeadContain">
+  <h2 class="text_center">Prayer Place Information</h2>
+</div>
+<p hidden id="api_url"><%=obj.api_url%></p>
+
+<div class="container" style="margin-top: 20px;">
+  <div>
+    <h3>Starting Times of The Prayer Offerings(Jamat)</h3>
+  </div>
+  <hr>
+  <p class="text_center" style="color:green" id="show_load">Loading...</p>
+
+  <div id = "ppTimeOpts" style="display: none">
+    <form method="POST" action="/test" style="max-width: 50%; margin: 0 auto">
+        <!-- ====================================== -->
+        <!------------------- fajr ------------------->
+        <!-- ====================================== -->
+
+        <div class="form-inline">
+        <div class="row">
+          <div class="col-lg-2 col-md-2 col-sm-12">
+            <label style="font-size: 1.25em">Fajr</label>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="fajrHour">HH</label>
+            <select class="form-control" name="fajr[hour]" id="fajrHour">
+              <option>--</option>
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="fajrMin">MM</label>
+            <select class="form-control" name="fajr[min]" id="fajrMin">
+              <option>--</option>
+            </select>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="fajrAmPm">AM/PM</label>
+            <select class="form-control" name="fajr[am_pm]" id="fajrAmPm">
+              <option>--</option>
+            </select>
+          </div>
+        </div>
+      </div> <!-- form inline ends -->
+
+        <!-- ====================================== -->
+        <!------------------- dhuhr ------------------->
+        <!-- ====================================== -->
+
+
+      <div class="form-inline" style="margin-top: 20px;">
+        <div class="row">
+          <div class="col-lg-2 col-md-2 col-sm-12">
+            <label style="font-size: 1.25em">Dhuhr</label>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="dhuhrHour">HH</label>
+            <select class="form-control" name="dhuhr[hour]" id="dhuhrHour">
+              <option>--</option>
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="dhuhrMin">MM</label>
+            <select class="form-control" name="dhuhr[min]" id="dhuhrMin">
+              <option>--</option>
+            </select>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="dhuhrAmPm">AM/PM</label>
+            <select class="form-control" name="dhuhr[am_pm]" id="dhuhrAmPm">
+              <option>--</option>
+            </select>
+          </div>
+        </div>
+      </div> <!-- form inline ends -->
+
+        <!-- ====================================== -->
+        <!------------------- asr ------------------->
+        <!-- ====================================== -->
+      <div class="form-inline" style="margin-top: 20px;">
+        <div class="row">
+          <div class="col-lg-2 col-md-2 col-sm-12">
+            <label style="font-size: 1.25em">Asr</label>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="asrHour">HH</label>
+            <select class="form-control" name="asr[hour]" id="asrHour">
+              <option>--</option>
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="asrMin">MM</label>
+            <select class="form-control" name="asr[min]" id="asrMin">
+              <option>--</option>
+            </select>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="asrAmPm">AM/PM</label>
+            <select class="form-control" name="asr[am_pm]" id="asrAmPm">
+              <option>--</option>
+            </select>
+          </div>
+        </div>
+      </div> <!-- form inline ends -->
+
+
+        <!-- ====================================== -->
+        <!------------------- maghrib ------------------->
+        <!-- ====================================== -->
+      <div class="form-inline" style="margin-top: 20px;">
+        <div class="row">
+          <div class="col-lg-2 col-md-2 col-sm-12">
+            <label style="font-size: 1.25em">Maghrib</label>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="maghribHour">HH</label>
+            <select class="form-control" name="maghrib[hour]" id="maghribHour">
+              <option>--</option>
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="maghribMin">MM</label>
+            <select class="form-control" name="maghrib[min]" id="maghribMin">
+              <option>--</option>
+            </select>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="maghribAmPm">AM/PM</label>
+            <select class="form-control" name="maghrib[am_pm]" id="maghribAmPm">
+              <option>--</option>
+            </select>
+          </div>
+        </div>
+      </div> <!-- form inline ends -->
+
+        <!-- ====================================== -->
+        <!------------------- isha ------------------->
+        <!-- ====================================== -->
+      <div class="form-inline" style="margin-top: 20px;">
+        <div class="row">
+          <div class="col-lg-2 col-md-2 col-sm-12">
+            <label style="font-size: 1.25em">Isha</label>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="ishaHour">HH</label>
+            <select class="form-control" name="isha[hour]" id="ishaHour">
+              <option>--</option>
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="ishaMin">MM</label>
+            <select class="form-control" name="isha[min]" id="ishaMin">
+              <option>--</option>
+            </select>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="ishaAmPm">AM/PM</label>
+            <select class="form-control" name="isha[am_pm]" id="ishaAmPm">
+              <option>--</option>
+            </select>
+          </div>
+        </div>
+      </div> <!-- form inline ends -->
+
+
+      
+      <input type="submit" value="submit">
+
+    </form> <!-- actual form ends -->
+
+  </div>
+  
+</div>
+
+
+<% include ../partials/new_pp/new_pp_footer %>

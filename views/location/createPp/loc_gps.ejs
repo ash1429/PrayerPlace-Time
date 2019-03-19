@@ -11,34 +11,35 @@
       <div style="max-width: 50%; margin: 0 auto" id="location_values">
     
         <!-- Suburb/Village/Colony -->
-<!--         <div class="form-group">
+        
+      </div>
+
+      <form action="<%=current_url%>/pp" method="POST" style="max-width: 50%; margin: 0 auto">
+        <div class="form-group">
           <label for="suburb">Suburb/Village/Colony</label>
           <input type="text" class="form-control" name="location[suburb]" id="suburb" value="" placeholder="" required>
         </div>
- -->        
-          <!-- City -->
+        
+        <!-- City -->
         <div class="form-group">
-          <label for="city">City</label>
+          <label for="city">City/Town</label>
           <input type="text" class="form-control" name="location[City]" id="city" value="" placeholder="" required>
         </div>
-    
+        
         <!-- State/Division -->
         <div class="form-group">
           <label for="State">State/Division</label>
-          <input type="text" class="form-control" name="location[State]" id="state" value="" required>
+          <input type="text" class="form-control" name="location[State]" id="state" value="" readonly="readonly">
         </div>
-    
+        
         <!-- Country -->
         <div class="form-group">
           <label for="country">Country</label>
-          <input type="text" class="form-control" name="location[country]" id="country" value="" required>
+          <input type="text" class="form-control" name="location[country]" id="country" value="" readonly="readonly">
         </div>
-      </div>
 
-      <form action="<%=current_url%>/show_pt" method="GET" style="max-width: 50%; margin: 0 auto">
-        
         <input type="hidden" value="" name="api_url" id="api_url" />
-        <input type="hidden" value="" name="display_name" id="display_name" />
+        <!-- <input type="hidden" value="" name="display_name" id="display_name" /> -->
         <input type="hidden" value="" name="date" id="date" />
         <input type="hidden" value="" name="lat" id="lat" />
         <input type="hidden" value="" name="lon" id="lon" />
@@ -50,9 +51,9 @@
     <div class="container" style="max-width: 50%; margin: 0 auto">
         <p id="wrong_location" style="color: red;display: none; text-align: center">
           Location Wrong?
-          <a href="/loc_fpt/loc_search_fpt" id="search_by_city_button">Search by City</a>
+          <a href="#" id="search_by_city_button">Search by City</a>
         </p>
     </div>
 <p hidden id="current_url"><%=current_url%></p>
 
-<% include ../../partials/loc_gps_fpt/loc_gps_fpt_ftr %>
+<% include ../../partials/loc_gps_cpp/loc_gps_cpp_ftr %>

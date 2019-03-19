@@ -55,6 +55,7 @@ app.use((req, res, next) => {
 //routing routers
 app.use("/", index);
 app.use("/loc_fpt", loc_fpt);
+// app.use("/loc_cpp", auth.user, loc_cpp);
 app.use("/loc_cpp", loc_cpp);
 app.use('/signup', auth.notUser, signup);
 app.use('/login', auth.notUser, login);

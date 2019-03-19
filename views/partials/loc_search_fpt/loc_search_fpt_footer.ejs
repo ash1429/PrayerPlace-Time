@@ -44,6 +44,8 @@
             form.append( $("<input>",{ type: 'hidden', name: 'api_url', value: url_to_pass }) );
             form.append( $("<input>",{ type: 'hidden', name: 'display_name', value: element.display_name }) );
             form.append( $("<input>",{ type: 'hidden', name: 'date', value: date }) );
+            form.append( $("<input>",{ type: 'hidden', name: 'lat', value: element.lat }) );
+            form.append( $("<input>",{ type: 'hidden', name: 'lon', value: element.lon }) );
             
             form.append( $("<input>", { type: 'submit', value: element.display_name, 
             class: 'btn btn-lg btn-default loc_search_fpt_btns' }) );

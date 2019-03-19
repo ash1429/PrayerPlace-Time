@@ -1,16 +1,17 @@
 var auth = {};
 
 auth.user = function auth(req, res, next) {
-  if (req.user && req.isAuthenticated){
+  req.session.returnTo = req.originalUrl;
+  if (req.user && req.isAuthenticated()){
     next();
   }
   else{
-    res.send('You are not authorized');
+    res.redirect('/login');
   }
 }
 
 auth.admin = function auth(req, res, next) {
-  if (req.user && req.isAuthenticated && req.user.admin) {
+  if (req.user && req.isAuthenticated() && req.user.admin) {
     next();
   }
   else {
@@ -19,7 +20,7 @@ auth.admin = function auth(req, res, next) {
 };
 
 auth.notUser = function auth(req, res, next) {
-  if (!req.user && req.isUnauthenticated) {
+  if (!req.user && req.isUnauthenticated()) {
     next();
   }
   else {

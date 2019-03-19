@@ -1,0 +1,314 @@
+<script src="/scripts/jquery.js"></script>
+<script src="/scripts/bootstrap.js"></script>
+<script>
+        //Declaring variables
+  var fajrStartHour, fajrStartMin, fajrEndHour, fajrEndMin;
+  var fajrHourOpts = [];
+  var fajrTimeFormat = [];
+  
+  var dhuhrStartHour, dhuhrStartMin, dhuhrEndHour, dhuhrEndMin;
+  var dhuhrHourOpts = [];
+  var dhuhrTimeFormat = [];
+
+  var asrStartHour, asrStartMin, asrEndHour, asrEndMin;
+  var asrHourOpts = [];
+  var asrTimeFormat = [];
+
+  var maghribStartHour, maghribStartMin, maghribEndHour, maghribEndMin;
+  var maghribHourOpts = [];
+  var maghribTimeFormat = [];
+
+  var ishaStartHour, ishaStartMin, ishaEndHour, ishaEndMin;
+  var ishaHourOpts = [];
+  var ishaTimeFormat = [];
+
+  function fixHourOptsAndTf(startHour, startMin, endHour, endMin, prayerName) {
+    var hourOpts = [];
+    var timeFormat = [];
+
+    endMin = endMin - 10;
+    if (endMin < 0) {
+      endMin = endMin + 60;
+      endHour = endHour - 1;
+      if (endHour < 0) {
+        endHour = endHour + 24;
+      }
+    }
+
+    var j = 0;
+
+    if(startHour > endHour){
+      for(var i = startHour; i <= 23; i++){
+        if (i < 12) {
+          timeFormat[j] = 'AM';
+          hourOpts[j] = (i % 12) || 12;
+
+        } else {
+          timeFormat[j] = 'PM';
+          hourOpts[j] = (i % 12) || 12;
+        }
+        j++;      
+      }//for ends
+      for(var i = 0; i <= endHour; i++){
+        if (i < 12) {
+          timeFormat[j] = 'AM';
+          hourOpts[j] = (i % 12) || 12;
+
+        } else {
+          timeFormat[j] = 'PM';
+          hourOpts[j] = (i % 12) || 12;
+        }
+        j++;
+      }//for ends
+    }//if ends
+    else{
+      for (var i = startHour; i <= endHour; i++) {
+        if (i < 12) {
+          timeFormat[j] = 'AM';
+          hourOpts[j] = (i % 12) || 12;
+          
+        } else {
+          timeFormat[j] = 'PM';
+          hourOpts[j] = (i % 12) || 12;
+        }
+        j++;
+      }//for ends
+    }//else ends
+
+    if (prayerName == 'Fajr') {
+      fajrEndHour = endHour;
+      fajrEndMin = endMin;
+      fajrHourOpts = hourOpts;
+      fajrTimeFormat = timeFormat;
+      for (var i = 0; i <= (hourOpts.length-1); i++) {
+        $('#fajrHour').append('<option>' + hourOpts[i] + '</option>');
+      }
+
+    }
+    else if (prayerName == 'Dhuhr') {
+      dhuhrEndHour = endHour;
+      dhuhrEndMin = endMin;
+      dhuhrHourOpts = hourOpts;
+      dhuhrTimeFormat = timeFormat;
+      for (var i = 0; i <= (hourOpts.length-1); i++) {
+        $('#dhuhrHour').append('<option>' + hourOpts[i] + '</option>');
+      }
+    }
+    
+    else if (prayerName == 'Asr') {
+      asrEndHour = endHour;
+      asrEndMin = endMin;
+      asrHourOpts = hourOpts;
+      asrTimeFormat = timeFormat;
+      for (var i = 0; i <= (hourOpts.length-1); i++) {
+        $('#asrHour').append('<option>' + hourOpts[i] + '</option>');
+      }
+    }
+    
+    else if (prayerName == 'Isha') {
+      
+      ishaEndHour = endHour;
+      ishaEndMin = endMin;
+      ishaHourOpts = hourOpts;
+      ishaTimeFormat = timeFormat;
+      for (var i = 0; i <= (hourOpts.length - 1); i++) {
+        $('#ishaHour').append('<option>' + hourOpts[i] + '</option>');
+      }
+
+    }
+  }//function ends
+
+
+  //getting prayer time span
+  url_to_get = $('#api_url').text();
+    $.ajax({
+      url: url_to_get,
+      type: 'GET',
+      success: function (data) {
+        Object.entries(data.data.timings).forEach(entry => {
+          var time = entry[1].toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+          
+
+          console.log(entry[0] + " " + time[1] + " " + time[3]);
+          
+          if(entry[0] === "Fajr"){
+            fajrStartHour = Number(time[1]);
+            fajrStartMin = Number(time[3]);
+            
+          }
+
+          else if(entry[0] === "Sunrise"){
+            var sunriseHour = Number(time[1]);
+            var sunriseMin = Number(time[3]);
+            fixHourOptsAndTf(fajrStartHour, fajrStartMin, sunriseHour, sunriseMin, "Fajr");
+          }          
+          
+          else if(entry[0] === "Dhuhr"){            
+            dhuhrStartHour = Number(time[1]);
+            dhuhrStartMin = Number(time[3]);
+          }
+          
+          else if(entry[0] === "Asr"){            
+            asrStartHour = Number(time[1]);
+            asrStartMin = Number(time[3]);
+            fixHourOptsAndTf(dhuhrStartHour, dhuhrStartMin, asrStartHour, asrStartMin, "Dhuhr");
+
+          }
+
+          else if(entry[0] === "Maghrib"){            
+            maghribStartHour = Number(time[1]);
+            maghribStartMin = Number(time[3]);
+            fixHourOptsAndTf(asrStartHour, asrStartMin, maghribStartHour, maghribStartMin, "Asr");
+
+
+            maghribStartHour = 6;
+            maghribStartMin = 55;
+            maghribEndHour = maghribStartHour;
+            maghribEndMin = maghribStartMin + 15;
+            if(maghribEndMin >= 60){
+              maghribEndMin = maghribEndMin % 60;
+              maghribEndHour = maghribEndHour + 1;
+              if(maghribEndHour >= 24){
+                maghribEndHour = maghribEndHour % 24;
+              }
+            }
+            // console.log(maghribEndMin);
+            
+            maghribStartHour = maghribStartHour % 12 || 12;
+            $('#maghribHour').append('<option>' + maghribStartHour + '</option>');
+            $('#maghribAmPm').append('<option>' + "PM" + '</option>');
+            maghribTimeFormat[0] = 'PM';
+            maghribEndHour = maghribEndHour % 12 || 12;
+            if(maghribStartHour === maghribEndHour){
+              maghribHourOpts[0] = maghribStartHour;
+              for (var i = maghribStartMin; i <= maghribEndMin; i++) {
+                $('#maghribMin').append('<option>' + i + '</option>');
+              }
+              
+            }
+            else{
+              maghribTimeFormat[1] = 'PM';
+              $('#maghribHour').append('<option>' + maghribEndHour + '</option>');
+              maghribHourOpts[0] = maghribStartHour;
+              maghribHourOpts[1] = maghribEndHour;
+            }
+            // console.log(maghribHourOpts);
+            
+
+          }// maghrib ends
+          else if (entry[0] === "Isha") {
+            ishaStartHour = Number(time[1]);
+            ishaStartMin = Number(time[3]);
+
+          }
+
+          else if(entry[0] === 'Midnight'){
+            var midNightHour =  Number(time[1]);
+            var midNightMin =  Number(time[3]);
+            // console.log(midNightHour, midNightMin);
+            fixHourOptsAndTf(ishaStartHour, ishaStartMin, midNightHour, midNightMin, "Isha");            
+          }          
+        });//forEach ends
+        $('#show_load').hide();
+        $('#ppTimeOpts').show();
+      },//success function ends
+      error: function (data) {
+        alert('something wrong! Please Try again.');
+      },
+      timeout: 10000  // in miliseconds
+    });//ajax ends
+
+    //should write a function
+
+    function fixMinandTfForInput(hourVal, minId, amPmId, startMin, endMin, hourOpts, timeFormat){
+      $('#' + minId).html('');
+      $('#' + amPmId).html('');
+      $('#' + minId).append('<option>' + '--' + '</option>');
+      $('#' + amPmId).append('<option>' + '--' + '</option>');
+
+      if(hourVal !== '--'){
+      
+        if(hourOpts.length === 1){
+          for (var i = startMin; i <= endMin; i++) {
+            if (i < 10) {
+              i = '0' + i;
+            }
+            $('#' + minId).append('<option>' + i + '</option>');
+          }//for ends
+          $('#' + amPmId).append('<option>' + timeFormat[0] + '</option>');
+        }
+        else{
+          if (hourOpts[0] === Number(hourVal)) {
+            for (var i = startMin; i <= 59; i++) {
+              if (i < 10) {
+                i = '0' + i;
+              }
+              $('#' + minId).append('<option>' + i + '</option>');
+            }//for ends
+            $('#' + amPmId).append('<option>' + timeFormat[0] + '</option>');
+
+          }//if ends
+          else if (hourOpts[hourOpts.length - 1] === Number(hourVal)) {
+            for (var i = 0; i <= endMin; i++) {
+              if(i < 10){
+                i = '0' + i;
+              }
+              $('#' + minId).append('<option>' + i + '</option>');
+            }
+            $('#' + amPmId).append('<option>' + timeFormat[hourOpts.length - 1] + '</option>');
+          }
+          else{
+
+            for (var i = 0; i <= 59; i++) {
+              if (i < 10) {
+                i = '0' + i;
+              }
+              $('#' + minId).append('<option>' + i + '</option>');
+            }
+            $('#' + amPmId).append('<option>' + timeFormat[hourOpts.indexOf(Number(hourVal))] + '</option>');
+          }// nested else ends
+
+        }// outer else ends
+      }//hourVal != -- ends
+      
+
+
+    }//function fixHourOptsAndTf ends
+    
+    $('#fajrHour').change(()=>{
+      var hourVal = $('#fajrHour').val(); 
+      fixMinandTfForInput(hourVal, 'fajrMin', 'fajrAmPm', fajrStartMin, fajrEndMin, fajrHourOpts, fajrTimeFormat);
+    });
+
+    
+    $('#dhuhrHour').change(()=>{
+      var hourVal = $('#dhuhrHour').val(); 
+      fixMinandTfForInput(hourVal, 'dhuhrMin', 'dhuhrAmPm', dhuhrStartMin, dhuhrEndMin, dhuhrHourOpts, dhuhrTimeFormat);
+    });
+    
+    $('#asrHour').change(()=>{
+      var hourVal = $('#asrHour').val(); 
+      fixMinandTfForInput(hourVal, 'asrMin', 'asrAmPm', asrStartMin, asrEndMin, asrHourOpts, asrTimeFormat);
+    });
+
+    
+    $('#maghribHour').change(()=>{
+      var hourVal = $('#maghribHour').val(); 
+      fixMinandTfForInput(hourVal, 'maghribMin', 'maghribAmPm', maghribStartMin, maghribEndMin, maghribHourOpts, maghribTimeFormat);
+    });
+
+    $('#ishaHour').change(()=>{
+      var hourVal = $('#ishaHour').val(); 
+      fixMinandTfForInput(hourVal, 'ishaMin', 'ishaAmPm', ishaStartMin, ishaEndMin, ishaHourOpts, ishaTimeFormat);
+    });
+
+
+
+    // $('#dhuhrHour').change(()=>{
+      
+    // });    
+
+</script>
+</body>
+
+</html>

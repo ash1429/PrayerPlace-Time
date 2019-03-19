@@ -4,7 +4,7 @@
   function resetlocation() {
 
     $('#err_msg').text("");
-    // $('#suburb').val("");
+    $('#suburb').val("");
     $('#city').val("");
     $('#state').val("");
     $('#country').val("");
@@ -19,20 +19,25 @@
 
     $.get("https://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.coords.latitude + "&lon=" + position.coords.longitude, function (data) {
 
+      if (data.address.suburb) {
+        $('#suburb').val(data.address.suburb);
+        // $("#suburb").prop('disabled', true);
+      }
+
       if (data.address.city) {
         $('#city').val(data.address.city);
-        $("#city").prop('disabled', true);
+        // $("#city").prop('disabled', true);
 
       }
 
       if (data.address.state) {
         $('#state').val(data.address.state);
-        $("#state").prop('disabled', true);
+        // $("#state").prop('disabled', true);
       }
 
       if (data.address.country) {
         $('#country').val(data.address.country);
-        $("#country").prop('disabled', true);
+        // $("#country").prop('disabled', true);
       }
 
       var currentdate = new Date();
@@ -43,15 +48,16 @@
 
       // var url_action = $('#current_url').text() + "/show_pt";
       var url_to_pass = "http://api.aladhan.com/v1/timings/" + date + "?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude + "&method=2";
-      var display_name = data.display_name;
+      // var display_name = data.display_name;
 
       // console.log(date);
       // console.log(url_to_pass);
       // console.log(display_name);
 
+
       $('#date').val(date);
       $('#api_url').val(url_to_pass);
-      $('#display_name').val(display_name);
+      // $('#display_name').val(display_name);  
       $('#lat').val(position.coords.latitude);
       $('#lon').val(position.coords.longitude);
       

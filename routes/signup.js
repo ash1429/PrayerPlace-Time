@@ -18,13 +18,13 @@ router.post('/', (req, res, next) => {
           user.save((err, user) => {
             if (err) { res.send(err); }
             else {
-              console.log("Successfully signed up as: " + user.username);
+              // console.log("Successfully signed up as: " + user.username);
               res.redirect('/admin');
             }
           });
         }
         else if (!user.admin && user.username) {
-          console.log("Successfully signed up as: " + user.username);
+          // console.log("Successfully signed up as: " + user.username);
           res.redirect(req.session.returnTo || '/');
           delete req.session.returnTo;        
         }
