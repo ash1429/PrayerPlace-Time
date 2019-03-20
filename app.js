@@ -74,6 +74,7 @@ app.use('/signup', auth.notUser, signup);
 app.use('/login', auth.notUser, login);
 app.use('/logout', auth.user, logout);
 
-app.listen(process.env.PORT, process.env.IP, function () {
+const PORT = process.env.PORT || 5000
+app.listen(PORT, function () {
   console.log("Server Has Started!");
 });
