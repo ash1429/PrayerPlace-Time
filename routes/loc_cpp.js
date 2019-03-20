@@ -23,7 +23,7 @@ router.get("/gps", (req, res) => {
 
 });
 
-router.post("/gps/pp", (req, res) => {
+router.post("/gps/new", (req, res) => {
   // console.log(req.body);
   obj = req.body;
     

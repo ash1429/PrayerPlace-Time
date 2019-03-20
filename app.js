@@ -5,6 +5,30 @@ var express = require('express'),
   session = require("express-session"),
   app = express();
 
+  
+// const url = 'mongodb://localhost:27017/pp';
+// mongoose.connect(url, { useNewUrlParser: true }, function (err) {
+//   if (!err) {
+//     console.log("connected to db");
+//   }
+//   else {
+//     console.log(err);
+//   }
+// });
+
+//set up db for heroku
+const url = 'mongodb+srv://hola:hola@cluster0-wn6yj.mongodb.net/test?retryWrites=true';
+mongoose.connect(url, { useNewUrlParser: true }, function (err) {
+  if (!err) {
+    console.log("connected to db");
+  }
+  else {
+    console.log(err);
+  }
+});
+
+
+
 //Load routers
 var index = require('./routes/index');
 var loc_fpt = require('./routes/loc_fpt');
@@ -15,17 +39,6 @@ var logout = require('./routes/logout');
 
 //for checking authorization
 var auth = require('./auth');
-
-//set up db
-const url = 'mongodb://localhost:27017/pp';
-mongoose.connect(url, { useNewUrlParser: true }, function (err) {
-  if (!err) {
-    console.log("connected to db");
-  }
-  else {
-    console.log(err);
-  }
-});
 
 //authentication using passport boiler plate
 var passport = require('passport');
@@ -55,8 +68,8 @@ app.use((req, res, next) => {
 //routing routers
 app.use("/", index);
 app.use("/loc_fpt", loc_fpt);
-// app.use("/loc_cpp", auth.user, loc_cpp);
-app.use("/loc_cpp", loc_cpp);
+app.use("/loc_cpp", auth.user, loc_cpp);
+// app.use("/loc_cpp", loc_cpp);
 app.use('/signup', auth.notUser, signup);
 app.use('/login', auth.notUser, login);
 app.use('/logout', auth.user, logout);

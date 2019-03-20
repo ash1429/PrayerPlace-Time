@@ -1,6 +1,7 @@
 <script src="/scripts/jquery.js"></script>
 <script src="/scripts/bootstrap.js"></script>
 <script>
+  $('#submitBtn').prop('disabled', true);
         //Declaring variables
   var fajrStartHour, fajrStartMin, fajrEndHour, fajrEndMin;
   var fajrHourOpts = [];
@@ -21,6 +22,10 @@
   var ishaStartHour, ishaStartMin, ishaEndHour, ishaEndMin;
   var ishaHourOpts = [];
   var ishaTimeFormat = [];
+
+  var jummaStartHour, jummaStartMin, jummaEndHour, jummaEndMin;
+  var jummaHourOpts = [];
+  var jummaTimeFormat = [];
 
   function fixHourOptsAndTf(startHour, startMin, endHour, endMin, prayerName) {
     var hourOpts = [];
@@ -93,6 +98,15 @@
       for (var i = 0; i <= (hourOpts.length-1); i++) {
         $('#dhuhrHour').append('<option>' + hourOpts[i] + '</option>');
       }
+      jummaStartHour = dhuhrStartHour;
+      jummaStartMin = dhuhrStartMin;
+      jummaEndHour = dhuhrEndHour;
+      jummaEndMin = dhuhrEndMin
+      jummaHourOpts = dhuhrHourOpts;
+      jummaTimeFormat = dhuhrTimeFormat;
+      for (var i = 0; i <= (hourOpts.length - 1); i++) {
+        $('#jummaHour').append('<option>' + hourOpts[i] + '</option>');
+      }
     }
     
     else if (prayerName == 'Asr') {
@@ -103,6 +117,7 @@
       for (var i = 0; i <= (hourOpts.length-1); i++) {
         $('#asrHour').append('<option>' + hourOpts[i] + '</option>');
       }
+
     }
     
     else if (prayerName == 'Isha') {
@@ -129,7 +144,7 @@
           var time = entry[1].toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
           
 
-          console.log(entry[0] + " " + time[1] + " " + time[3]);
+          // console.log(entry[0] + " " + time[1] + " " + time[3]);
           
           if(entry[0] === "Fajr"){
             fajrStartHour = Number(time[1]);
@@ -152,7 +167,6 @@
             asrStartHour = Number(time[1]);
             asrStartMin = Number(time[3]);
             fixHourOptsAndTf(dhuhrStartHour, dhuhrStartMin, asrStartHour, asrStartMin, "Dhuhr");
-
           }
 
           else if(entry[0] === "Maghrib"){            
@@ -284,6 +298,11 @@
     $('#dhuhrHour').change(()=>{
       var hourVal = $('#dhuhrHour').val(); 
       fixMinandTfForInput(hourVal, 'dhuhrMin', 'dhuhrAmPm', dhuhrStartMin, dhuhrEndMin, dhuhrHourOpts, dhuhrTimeFormat);
+    });
+    
+    $('#jummaHour').change(()=>{
+      var hourVal = $('#jummaHour').val(); 
+      fixMinandTfForInput(hourVal, 'jummaMin', 'jummaAmPm', jummaStartMin, jummaEndMin, jummaHourOpts, jummaTimeFormat);
     });
     
     $('#asrHour').change(()=>{
