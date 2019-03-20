@@ -37,7 +37,7 @@
           var url_action = $('#current_url').text() + "/show_pt";
 
           data.forEach(element => {
-            var url_to_pass = "http://api.aladhan.com/v1/timings/" + date + "?latitude=" + element.lat + "&longitude=" + element.lon + "&method=2";
+            var url_to_pass = "https://api.aladhan.com/v1/timings/" + date + "?latitude=" + element.lat + "&longitude=" + element.lon + "&method=2";
 
             var form = $("<form/>", { action: url_action });
             

@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <form action="<%=current_url%>/show_pt" method="GET" style="max-width: 50%; margin: 0 auto">
+      <form action="/loc_fpt/loc_gps_fpt/show_pt" method="GET" style="max-width: 50%; margin: 0 auto">
         
         <input type="hidden" value="" name="api_url" id="api_url" />
         <input type="hidden" value="" name="display_name" id="display_name" />
@@ -53,6 +53,6 @@
           <a href="/loc_fpt/loc_search_fpt" id="search_by_city_button">Search by City</a>
         </p>
     </div>
-<p hidden id="current_url"><%=current_url%></p>
+<p hidden id="current_url">/loc_fpt/loc_gps_fpt</p>
 
 <% include ../../partials/loc_gps_fpt/loc_gps_fpt_ftr %>

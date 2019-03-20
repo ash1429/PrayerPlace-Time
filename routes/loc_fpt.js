@@ -2,11 +2,7 @@ var express = require("express");
 var router = express.Router({ mergeParams: true });
 
 router.get("/", (req, res) => {
-  // var url = req.originalUrl;
-  // console.log(url);
-  var current_url = req.originalUrl.substr(0, req.originalUrl.indexOf('?')); 
-  // console.log(url);
-  res.render('location/findPt/loc_opts', {current_url: current_url});
+  res.render('location/findPt/loc_opts');
 });
 
 router.get("/loc_search_fpt", (req, res) => {
@@ -24,10 +20,10 @@ router.get("/loc_search_fpt/show_pt", (req, res) => {
 });
 
 router.get("/loc_gps_fpt", (req, res) => {
-  var current_url = req.originalUrl;
+  // var current_url = req.originalUrl;
   // console.log(current_url);
   
-  res.render('location/findPt/loc_gps', { current_url: current_url });
+  res.render('location/findPt/loc_gps');
 
 });
 

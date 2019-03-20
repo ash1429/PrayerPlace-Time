@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   
   // if(req.isAuthenticated()){
     var current_url = req.originalUrl.substr(0, req.originalUrl.indexOf('?'));
-    res.render('location/createPp/loc_opts', { current_url: current_url });
+    res.render('location/createPp/loc_opts');
   // }
   // else{
     // res.redirect('/login');
@@ -19,7 +19,7 @@ router.get("/gps", (req, res) => {
   var current_url = req.originalUrl;
   // console.log(current_url);
 
-  res.render('location/createPp/loc_gps', { current_url: current_url });
+  res.render('location/createPp/loc_gps');
 
 });
 
