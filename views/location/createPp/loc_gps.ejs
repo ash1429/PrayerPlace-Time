@@ -14,7 +14,7 @@
         
       </div>
 
-      <form action="<%=current_url%>/new" method="POST" style="max-width: 50%; margin: 0 auto">
+      <form action="/loc_cpp/gps/new" method="POST" style="max-width: 50%; margin: 0 auto">
         <div class="form-group">
           <label for="suburb">Suburb/Village/Colony</label>
           <input type="text" class="form-control" name="location[suburb]" id="suburb" value="" placeholder="" required>
@@ -54,6 +54,6 @@
           <a href="#" id="search_by_city_button">Search by City</a>
         </p>
     </div>
-<p hidden id="current_url"><%=current_url%></p>
+<p hidden id="current_url">/loc_cpp/gps</p>
 
 <% include ../../partials/loc_gps_cpp/loc_gps_cpp_ftr %>
