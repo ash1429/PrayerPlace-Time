@@ -23,12 +23,27 @@ router.get("/gps", (req, res) => {
 
 });
 
-router.post("/gps/new", (req, res) => {
-  // console.log(req.body);
+router.post("/new", (req, res) => {
+  console.log(req.body);
   obj = req.body;
     
   res.render('pp/new', {obj: obj});
 });
 
+router.get("/find", (req, res) => {
+  var current_url = req.originalUrl;
+  // console.log(current_url);
+
+  res.render('location/createPp/loc_find');
+
+});
+
+router.get("/find/confirm", (req, res) => {
+
+  obj = { latitude: req.query.lat, longitude: req.query.lon};
+  console.log(obj);
+  
+  res.render('location/createPp/loc_find_confirm',{obj: obj});
+});
 
 module.exports = router;

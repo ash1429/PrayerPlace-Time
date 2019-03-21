@@ -1,7 +1,6 @@
 <script src="/scripts/jquery.js"></script>
 <script src="/scripts/bootstrap.js"></script>
 <script>
-  $('#submitBtn').prop('disabled', true);
         //Declaring variables
   var fajrStartHour, fajrStartMin, fajrEndHour, fajrEndMin;
   var fajrHourOpts = [];
@@ -144,7 +143,7 @@
           var time = entry[1].toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
           
 
-          // console.log(entry[0] + " " + time[1] + " " + time[3]);
+          console.log(entry[0] + " " + time[1] + " " + time[3]);
           
           if(entry[0] === "Fajr"){
             fajrStartHour = Number(time[1]);
@@ -175,8 +174,6 @@
             fixHourOptsAndTf(asrStartHour, asrStartMin, maghribStartHour, maghribStartMin, "Asr");
 
 
-            maghribStartHour = 6;
-            maghribStartMin = 55;
             maghribEndHour = maghribStartHour;
             maghribEndMin = maghribStartMin + 15;
             if(maghribEndMin >= 60){

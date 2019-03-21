@@ -1,0 +1,72 @@
+<script src="/scripts/jquery.js"></script>
+<script src="/scripts/bootstrap.js"></script>
+<script>
+    $('#loc_search_fpt_btn').click(function () {
+
+      var input_txt = $('#loc_search_fpt_textbox').val();
+      // $('#searching_loc_fpt').show();
+
+      // console.log(input_txt);
+      // console.log(input_txt.length);
+      if (input_txt.length === 0) {
+        alert('please input city name');
+      }
+      else if (input_txt.length > 0) {
+        $('#loc_search_fpt_textbox').val("Searching...");
+        $('#loc_search_fpt_textbox').prop('disabled', true);
+        $('#loc_search_fpt_btn').prop('disabled', true);
+
+        var url_to_get = "https://nominatim.openstreetmap.org/search?q=" + input_txt + "&format=json";
+        $.ajax({
+          url: url_to_get,
+          type: 'GET',
+          success: function (data) {
+            $('#loc_search_fpt_textbox').val("");
+            $('#result_h4').show();
+            $('#loc_search_fpt_textbox').prop('disabled', false);
+            $('#loc_search_fpt_btn').prop('disabled', false);
+            $("#add_loc_search_fpt").empty();;
+
+            var currentdate = new Date();
+
+            var dd = currentdate.getDate();
+            var mm = currentdate.getMonth() + 1;
+            var yy = currentdate.getFullYear();
+            var date = dd + "-" + mm + "-" + yy;
+            var url_action = $('#current_url').text();
+
+            data.forEach(element => {
+              var url_to_pass = "https://api.aladhan.com/v1/timings/" + date + "?latitude=" + element.lat + "&longitude=" + element.lon + "&method=2";
+
+              var form = $("<form/>", { action: url_action });
+              
+              form.append($("<input>", { type: 'hidden', name: 'lat', value: element.lat }));
+              form.append($("<input>", { type: 'hidden', name: 'lon', value: element.lon }));
+
+              form.append($("<input>", {
+                type: 'submit', value: element.display_name,
+                class: 'btn btn-lg btn-default loc_search_fpt_btns'
+              }));
+
+              $("#add_loc_search_fpt").append(form);
+
+            });//forEach ends
+
+            $('#cant_find').show();
+
+          },//success function ends
+          error: function (data) {
+            alert('something wrong! Please check you your net connection and try again.');
+          },
+          timeout: 10000  // in miliseconds
+        });//ajax ends
+      }
+
+
+
+    });
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<% include ../partials/default/header %>
+
+<div class="container show_HeadContain">
+  <h3 class="text_center"><%=obj.location.buildingInfo%>, <%=obj.location.suburb%>, <%=obj.location.city%>, <%=obj.location.state%>, <%=obj.location.country%>.</h3>
+</div>
+
+<div class="container" id="add_table" style="max-width: 30%; margin-top: 30px">
+
+  <div>
+    <p class="text_center"> <span style="color:darkgreen">Posted By:</span> <em> <%= obj.provider.username %> </em></p>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Prayer Name</th>
+        <th style='text-align:right;'>Jamat Start</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>  
+        <td>Fajr</td>
+        <% if(obj.fajr.hour === '--' || obj.fajr.min === '--' || obj.fajr.am_pm === '--') {%>
+          <td style='text-align:right; color: chocolate'>Not Specifed</td>
+          <%} else{%>
+            <td style='text-align:right; font-weight: bold;'><%=obj.fajr.hour%>:<%=obj.fajr.min%> <%=obj.fajr.am_pm%> </td>
+        <%}%>
+      </tr>
+
+      <tr>  
+        <td>Dhuhr</td>
+        <% if(obj.dhuhr.hour === '--' || obj.dhuhr.min === '--' || obj.dhuhr.am_pm === '--') {%>
+          <td style='text-align:right; color: chocolate'>Not Specifed</td>
+          <%} else{%>
+            <td style='text-align:right; font-weight: bold;'><%=obj.dhuhr.hour%>:<%=obj.dhuhr.min%> <%=obj.dhuhr.am_pm%> </td>
+        <%}%>
+      </tr>
+
+      <tr>  
+        <td>Asr</td>
+        <% if(obj.asr.hour === '--' || obj.asr.min === '--' || obj.asr.am_pm === '--') {%>
+          <td style='text-align:right; color: chocolate'>Not Specifed</td>
+          <%} else{%>
+            <td style='text-align:right; font-weight: bold;'><%=obj.asr.hour%>:<%=obj.asr.min%> <%=obj.asr.am_pm%> </td>
+        <%}%>
+      </tr>
+
+      <tr>  
+        <td>Maghrib</td>
+        <% if(obj.maghrib.hour === '--' || obj.maghrib.min === '--' || obj.maghrib.am_pm === '--') {%>
+          <td style='text-align:right; color: chocolate'>Not Specifed</td>
+          <%} else{%>
+            <td style='text-align:right; font-weight: bold;'><%=obj.maghrib.hour%>:<%=obj.maghrib.min%> <%=obj.maghrib.am_pm%> </td>
+        <%}%>
+      </tr>
+
+      <tr>  
+        <td>Isha</td>
+        <% if(obj.isha.hour === '--' || obj.isha.min === '--' || obj.isha.am_pm === '--') {%>
+          <td style='text-align:right; color: chocolate'>Not Specifed</td>
+          <%} else{%>
+            <td style='text-align:right; font-weight: bold;'><%=obj.isha.hour%>:<%=obj.isha.min%> <%=obj.isha.am_pm%> </td>
+        <%}%>
+      </tr>
+
+      <tr>  
+        <td>Jumma</td>
+        <% if(obj.jumma.hour === '--' || obj.jumma.min === '--' || obj.jumma.am_pm === '--') {%>
+          <td style='text-align:right; color: chocolate'>Not Specifed</td>
+          <%} else{%>
+            <td style='text-align:right; font-weight: bold;'><%=obj.jumma.hour%>:<%=obj.jumma.min%> <%=obj.jumma.am_pm%> </td>
+        <%}%>
+      </tr>
+      
+    </tbody>
+  </table>
+  <% if (currentUser && currentUser._id.equals(obj.provider.id)) { %>
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <a href="/prayerplace/<%=obj._id%>/edit" class="btn btn-primary">Edit</a>
+      </div>
+
+      <div class="col-md-6 col-sm-6">
+        <div class="col-md-6 col-sm-6 pull-right" style="">
+          <a href="" class="btn btn-danger">delete</a>
+        </div>
+      </div>
+    </div>
+  <%}%>
+</div>
+<!-- 
+<div class="container">
+</div> -->
+
+<% include ../partials/default/footer %>

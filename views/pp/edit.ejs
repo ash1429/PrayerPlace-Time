@@ -9,7 +9,7 @@
 
   <p class="text_center" style="color:green" id="show_load">Loading...</p>
 
-  <div id = "ppTimeOpts" style="display: none">
+  <div id="ppTimeOpts" style="display: none">
     <form method="POST" action="/prayerplace" style="max-width: 50%; margin: 0 auto">
       <div>
         <h3 style="text-decoration: underline">Starting Times of The Prayer Offerings(Jamat start time):</h3>
@@ -44,9 +44,9 @@
         </div>
       </div> <!-- form inline ends -->
 
-        <!-- ====================================== -->
-        <!------------------- dhuhr ------------------->
-        <!-- ====================================== -->
+      <!-- ====================================== -->
+      <!------------------- dhuhr ------------------->
+      <!-- ====================================== -->
 
 
       <div class="form-inline" style="margin-top: 20px;">
@@ -75,9 +75,9 @@
         </div>
       </div> <!-- form inline ends -->
 
-        <!-- ====================================== -->
-        <!------------------- asr ------------------->
-        <!-- ====================================== -->
+      <!-- ====================================== -->
+      <!------------------- asr ------------------->
+      <!-- ====================================== -->
       <div class="form-inline" style="margin-top: 20px;">
         <div class="row">
           <div class="col-lg-2 col-md-2 col-sm-12">
@@ -105,9 +105,9 @@
       </div> <!-- form inline ends -->
 
 
-        <!-- ====================================== -->
-        <!------------------- maghrib ------------------->
-        <!-- ====================================== -->
+      <!-- ====================================== -->
+      <!------------------- maghrib ------------------->
+      <!-- ====================================== -->
       <div class="form-inline" style="margin-top: 20px;">
         <div class="row">
           <div class="col-lg-2 col-md-2 col-sm-12">
@@ -134,9 +134,9 @@
         </div>
       </div> <!-- form inline ends -->
 
-        <!-- ====================================== -->
-        <!------------------- isha ------------------->
-        <!-- ====================================== -->
+      <!-- ====================================== -->
+      <!------------------- isha ------------------->
+      <!-- ====================================== -->
       <div class="form-inline" style="margin-top: 20px;">
         <div class="row">
           <div class="col-lg-2 col-md-2 col-sm-12">
@@ -163,9 +163,9 @@
         </div>
       </div> <!-- form inline ends -->
 
-        <!-- ====================================== -->
-        <!------------------- jumma ------------------->
-        <!-- ====================================== -->
+      <!-- ====================================== -->
+      <!------------------- jumma ------------------->
+      <!-- ====================================== -->
       <div class="form-inline" style="margin-top: 20px;">
         <div class="row">
           <div class="col-lg-2 col-md-2 col-sm-12">
@@ -192,25 +192,26 @@
         </div>
       </div> <!-- form inline ends -->
 
-              <!-- ====================================== -->
-              <!------------------- Prayer offered for ------------------->
-              <!-- ====================================== -->
+      <!-- ====================================== -->
+      <!------------------- Prayer offered for ------------------->
+      <!-- ====================================== -->
 
       <div>
-        <h3 style="margin-left: 0 auto; padding-left: 0px;text-decoration: underline; margin-top: 60px;">Prayer offered for:</h3>
+        <h3 style="margin-left: 0 auto; padding-left: 0px;text-decoration: underline; margin-top: 60px;">Prayer offered
+          for:</h3>
       </div>
 
       <div class="row" style="margin-top: 20px">
         <div class="form-group" style="width: 100%">
-          <div class="col-lg-4 col-md-4 col-sm-4" >
+          <div class="col-lg-4 col-md-4 col-sm-4">
             <label class="radio-inline" style="font-size: 1.10em; font-weight: bold">
               <input type="radio" name="privilege" value="Men" checked>Men
-            </label>            
+            </label>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
             <label class="radio-inline" style="font-size: 1.10em; font-weight: bold">
               <input type="radio" name="privilege" value="Women">Women
-            </label>            
+            </label>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
             <label class="radio-inline" style="font-size: 1.10em; font-weight: bold">
@@ -220,48 +221,54 @@
         </div> <!-- form group ends -->
       </div> <!-- row ends -->
 
-          <!-- ====================================== -->
-          <!-------------------Location info ------------------->
-          <!-- ====================================== -->
+      <!-- ====================================== -->
+      <!-------------------Location info ------------------->
+      <!-- ====================================== -->
       <div>
-        <h3 style="margin-left: 0 auto; padding-left: 0px; text-decoration: underline; margin-top: 60px;">Location Info:</h3>
+        <h3 style="margin-left: 0 auto; padding-left: 0px; text-decoration: underline; margin-top: 60px;">Location Info:
+        </h3>
       </div>
 
       <div class="form-group" style="margin-top: 20px">
         <label for="suburb">Bulding Number/Name:</label>
-        <input type="text" class="form-control" name="location[buildingInfo]" id="suburb" value="" placeholder="Please enter the building name or number here" required>
+        <input type="text" class="form-control" name="location[buildingInfo]" id="suburb" value=""
+          placeholder="Please enter the building name or number here" required>
       </div>
 
       <div class="form-group" style="margin-top: 20px">
         <label for="suburb">Suburb/Village/Colony</label>
-        <input type="text" class="form-control" name="location[suburb]" id="suburb" value="<%=obj.location.suburb%>" readonly="readonly">
+        <input type="text" class="form-control" name="location[suburb]" id="suburb" value="<%=obj.location.suburb%>"
+          readonly="readonly">
       </div>
-      
+
       <!-- City -->
       <div class="form-group">
         <label for="city">City/Town</label>
-        <input type="text" class="form-control" name="location[city]" id="city" value="<%=obj.location.city%>" readonly="readonly">
+        <input type="text" class="form-control" name="location[city]" id="city" value="<%=obj.location.city%>"
+          readonly="readonly">
       </div>
-      
+
       <!-- State/Division -->
       <div class="form-group">
         <label for="State">State/Division</label>
-        <input type="text" class="form-control" name="location[state]" id="state" value="<%=obj.location.state%>" readonly="readonly">
+        <input type="text" class="form-control" name="location[state]" id="state" value="<%=obj.location.state%>"
+          readonly="readonly">
       </div>
-      
+
       <!-- Country -->
       <div class="form-group">
         <label for="country">Country</label>
-        <input type="text" class="form-control" name="location[country]" id="country" value="<%=obj.location.country%>" readonly="readonly">
+        <input type="text" class="form-control" name="location[country]" id="country" value="<%=obj.location.country%>"
+          readonly="readonly">
       </div>
-      
+
       <input type="hidden" value="" name="api_url" id="api_url" />
       <!-- <input type="hidden" value="" name="display_name" id="display_name" /> -->
-      
-      <input  hidden name="lat" value="<%= obj.lat %>">
-      <input  hidden name="lon" value="<%= obj.lon %>">
-      <input  hidden name="date" value="<%= obj.date %>">
-      
+
+      <input hidden name="lat" value="<%= obj.lat %>">
+      <input hidden name="lon" value="<%= obj.lon %>">
+      <input hidden name="date" value="<%= obj.date %>">
+
       <div style="padding-bottom: 50px;">
         <!-- <input type="submit" class="btn btn-lg btn-success homepageBtns" value="Submit" id="submitBtn" data-toggle="tooltip" data-placement="top" title="Haven't have finished yet"> -->
         <input type="submit" class="btn btn-lg btn-success homepageBtns" value="Submit" id="submitBtn">
@@ -271,7 +278,7 @@
   </div> <!-- pptimeOpts ends -->
 
 </div> <!-- the grand parent container form -->
-  
+
 
 
 <% include ../partials/new_pp/new_pp_footer %>

@@ -1,0 +1,81 @@
+<script src="/scripts/jquery.js"></script>
+<script src="/scripts/bootstrap.js"></script>
+<script>
+
+  var latitude = $('#latForAjaxUrl').text();
+  var longitude = $('#lonForAjaxUrl').text();
+  console.log(latitude, longitude);
+
+    url_to_get = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + latitude + "&lon=" + longitude;
+    $.ajax({
+      url: url_to_get,
+      type: 'GET',
+      success: function (data) {
+        console.log(data);
+        console.log(data.address.suburb);
+        
+
+        if (data.address.suburb) {
+          $('#suburb').val(data.address.suburb);
+          // $("#suburb").prop('disabled', true);
+        }
+
+        if (data.address.city) {
+          $('#city').val(data.address.city);
+          // $("#city").prop('disabled', true);
+
+        }
+
+        if (data.address.state) {
+          $('#state').val(data.address.state);
+          // $("#state").prop('disabled', true);
+        }
+
+        if (data.address.country) {
+          $('#country').val(data.address.country);
+          // $("#country").prop('disabled', true);
+        }
+
+        var currentdate = new Date();
+        var dd = currentdate.getDate();
+        var mm = currentdate.getMonth() + 1;
+        var yy = currentdate.getFullYear();
+        var date = dd + "-" + mm + "-" + yy;
+
+        // var url_action = $('#current_url').text() + "/show_pt";
+        var url_to_pass = "https://api.aladhan.com/v1/timings/" + date + "?latitude=" + latitude + "&longitude=" + longitude + "&method=2";
+        // var display_name = data.display_name;
+
+        // console.log(date);
+        // console.log(url_to_pass);
+        // console.log(display_name);
+
+
+        $('#date').val(date);
+        $('#api_url').val(url_to_pass);
+        // $('#display_name').val(display_name);  
+        $('#lat').val(latitude);
+        $('#lon').val(longitude);
+
+
+        $('#loc_gps_load').hide();
+        $('#gps_result').show();
+        // $('#wrong_location').text("Location Wrong?");
+        $('#wrong_location').show();
+        $('#search_by_city_button').show();
+
+
+      },//success function ends
+      error: function (data) {
+        alert('something wrong! Please Try again. in pp new footer');
+      },
+      timeout: 100000  // in miliseconds
+    });//ajax ends
+
+
+
+</script>
+
+</body>
+
+</html>

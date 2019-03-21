@@ -78,6 +78,7 @@
     // $('#err_msg').show();
   }
   resetlocation();
+
   if (navigator.geolocation) {
     $('#loc_gps_load').show();
     navigator.geolocation.getCurrentPosition(success, error, options);

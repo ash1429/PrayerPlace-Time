@@ -1,3 +1,5 @@
+var Prayerplace = require('./models/prayer_place');
+
 var auth = {};
 
 auth.user = function auth(req, res, next) {
@@ -9,6 +11,23 @@ auth.user = function auth(req, res, next) {
     res.redirect('/login');
   }
 }
+
+
+auth.ownership = function (req, res, next){
+  Prayerplace.findById(req.params.id_pp, (err, obj) => {
+    if (err) res.send(err);
+    else if (obj.provider.id) {
+      if((obj.provider.id).equals(req.user._id))
+        next();
+      else {
+        res.send("You are not Authorized");
+      }
+    }
+    else {
+      res.send("You are not Authorized");
+    }
+  })
+};
 
 auth.admin = function auth(req, res, next) {
   if (req.user && req.isAuthenticated() && req.user.admin) {

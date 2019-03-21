@@ -14,7 +14,7 @@
         
       </div>
 
-      <form action="/loc_cpp/gps/new" method="POST" style="max-width: 50%; margin: 0 auto">
+      <form action="/loc_cpp/new" method="POST" style="max-width: 50%; margin: 0 auto">
         <div class="form-group">
           <label for="suburb">Suburb/Village/Colony</label>
           <input type="text" class="form-control" name="location[suburb]" id="suburb" value="" placeholder="" required>
@@ -29,13 +29,13 @@
         <!-- State/Division -->
         <div class="form-group">
           <label for="State">State/Division</label>
-          <input type="text" class="form-control" name="location[state]" id="state" value="" readonly="readonly">
+          <input type="text" class="form-control" name="location[state]" id="state" value="" readonly="readonly" required>
         </div>
         
         <!-- Country -->
         <div class="form-group">
           <label for="country">Country</label>
-          <input type="text" class="form-control" name="location[country]" id="country" value="" readonly="readonly">
+          <input type="text" class="form-control" name="location[country]" id="country" value="" readonly="readonly" required>
         </div>
 
         <input type="hidden" value="" name="api_url" id="api_url" />
@@ -51,7 +51,7 @@
     <div class="container" style="max-width: 50%; margin: 0 auto">
         <p id="wrong_location" style="color: red;display: none; text-align: center">
           Location Wrong?
-          <a href="#" id="search_by_city_button">Search by City</a>
+          <a href="/loc_cpp/find" id="search_by_city_button">Search by City</a>
         </p>
     </div>
 <p hidden id="current_url">/loc_cpp/gps</p>

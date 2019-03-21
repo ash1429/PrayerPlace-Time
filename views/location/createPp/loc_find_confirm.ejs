@@ -1,0 +1,62 @@
+<% include ../../partials/default/header %>
+<div class="container show_HeadContain">
+  <h2 class="text_center">Confirm Location</h2>
+  <p style="margin-top: 20px; color: green; text-align: center" id='loc_gps_load'>Loading...</p>
+  <p style="margin-top: 20px; display: none; color: red;" id='err_msg'></p>
+
+</div>
+
+<div class="container" style="display: none;" id="gps_result">
+
+  <div style="max-width: 50%; margin: 0 auto" id="location_values">
+
+    <!-- Suburb/Village/Colony -->
+
+  </div>
+
+  <form action="/loc_cpp/new" method="POST" style="max-width: 50%; margin: 0 auto">
+    <div class="form-group">
+      <label for="suburb">Suburb/Village/Colony</label>
+      <input type="text" class="form-control" name="location[suburb]" id="suburb" value="" placeholder="" required>
+    </div>
+
+    <!-- City -->
+    <div class="form-group">
+      <label for="city">City/Town</label>
+      <input type="text" class="form-control" name="location[city]" id="city" value="" placeholder="" required>
+    </div>
+
+    <!-- State/Division -->
+    <div class="form-group">
+      <label for="State">State/Division</label>
+      <input type="text" class="form-control" name="location[state]" id="state" value="" readonly="readonly" required>
+    </div>
+
+    <!-- Country -->
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input type="text" class="form-control" name="location[country]" id="country" value="" readonly="readonly"
+        required>
+    </div>
+
+    <input type="hidden" value="" name="api_url" id="api_url" />
+    <!-- <input type="hidden" value="" name="display_name" id="display_name" /> -->
+    <input type="hidden" value="" name="date" id="date" />
+    <input type="hidden" value="" name="lat" id="lat" />
+    <input type="hidden" value="" name="lon" id="lon" />
+
+    <input type="submit" class="btn btn-primary btn-lg btn-block new_btnSubmit" value="Confirm">
+  </form>
+</div>
+
+<div class="container" style="max-width: 50%; margin: 0 auto">
+  <p id="wrong_location" style="color: red;display: none; text-align: center">
+    Location Wrong?
+    <a href="/loc_cpp/gps" id="">Try GPS</a>
+  </p>
+</div>
+
+<p hidden id="latForAjaxUrl"><%=obj.latitude%></p>
+<p hidden id="lonForAjaxUrl"><%=obj.longitude%></p>
+
+<% include ../../partials/loc_find_confirm/loc_find_confirm_ftr %>

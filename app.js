@@ -6,18 +6,7 @@ var express = require('express'),
   app = express();
 
   
-// const url = 'mongodb://localhost:27017/pp';
-// mongoose.connect(url, { useNewUrlParser: true }, function (err) {
-//   if (!err) {
-//     console.log("connected to db");
-//   }
-//   else {
-//     console.log(err);
-//   }
-// });
-
-//set up db for heroku
-const url = 'mongodb+srv://hola:hola@cluster0-wn6yj.mongodb.net/test?retryWrites=true';
+const url = 'mongodb://localhost:27017/pp';
 mongoose.connect(url, { useNewUrlParser: true }, function (err) {
   if (!err) {
     console.log("connected to db");
@@ -26,6 +15,17 @@ mongoose.connect(url, { useNewUrlParser: true }, function (err) {
     console.log(err);
   }
 });
+
+//set up db for heroku
+// const url = 'mongodb+srv://hola:hola@cluster0-wn6yj.mongodb.net/test?retryWrites=true';
+// mongoose.connect(url, { useNewUrlParser: true }, function (err) {
+//   if (!err) {
+//     console.log("connected to db");
+//   }
+//   else {
+//     console.log(err);
+//   }
+// });
 
 
 
@@ -36,6 +36,7 @@ var loc_cpp = require('./routes/loc_cpp');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
 var logout = require('./routes/logout');
+var prayer_place = require('./routes/prayer_place');
 
 //for checking authorization
 var auth = require('./auth');
@@ -67,12 +68,16 @@ app.use((req, res, next) => {
 
 //routing routers
 app.use("/", index);
-app.use("/loc_fpt", loc_fpt);
-app.use("/loc_cpp", auth.user, loc_cpp);
-// app.use("/loc_cpp", loc_cpp);
 app.use('/signup', auth.notUser, signup);
 app.use('/login', auth.notUser, login);
 app.use('/logout', auth.user, logout);
+
+app.use("/loc_fpt", loc_fpt);
+
+app.use("/loc_cpp", auth.user, loc_cpp);
+// app.use("/loc_cpp", loc_cpp);
+
+app.use("/prayerplace", prayer_place);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
