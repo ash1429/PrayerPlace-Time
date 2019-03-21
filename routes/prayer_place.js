@@ -63,10 +63,14 @@ router.get("/:id_pp/edit", auth.user, auth.ownership, (req, res) => {
   Prayerplace.findById(req.params.id_pp, (err, obj)=>{
     if(err) res.send(err);
     else{
-      console.log(obj);
-      res.send("edint");
+      res.render("pp/edit", {obj: obj});
     }
   });
+});
+
+router.post("/:id_pp/edit", auth.user, auth.ownership, (req, res) => {
+  console.log(req.body);
+  res.send("Sending....");
 });
 
 module.exports = router;

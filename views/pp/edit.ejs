@@ -3,16 +3,16 @@
 <div class="container show_HeadContain">
   <h2 class="text_center" style="font-weight: bolder">Prayer Place Information</h2>
 </div>
-<p hidden id="api_url"><%=obj.api_url%></p>
 
 <div class="container" style="margin-top: 20px;">
 
   <p class="text_center" style="color:green" id="show_load">Loading...</p>
 
-  <div id="ppTimeOpts" style="display: none">
-    <form method="POST" action="/prayerplace" style="max-width: 50%; margin: 0 auto">
+  <!-- <div id="ppTimeOpts" style="display: none"> -->
+  <div id="ppTimeOpts" style="display: none;">
+    <form method="POST" action="/prayerplace/<%=obj._id%>/edit" style="max-width: 50%; margin: 0 auto">
       <div>
-        <h3 style="text-decoration: underline">Starting Times of The Prayer Offerings(Jamat start time):</h3>
+        <h3 style="text-decoration: underline">Jamat Start Time:</h3>
       </div>
       <!-- ====================================== -->
       <!------------------- fajr ------------------->
@@ -26,18 +26,21 @@
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="fajrHour">HH</label>
             <select class="form-control" name="fajr[hour]" id="fajrHour">
+              <option id="firstOpFajr"><%=obj.fajr.hour%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="fajrMin">MM</label>
             <select class="form-control" name="fajr[min]" id="fajrMin">
+              <option><%=obj.fajr.min%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12">
             <label for="fajrAmPm">AM/PM</label>
             <select class="form-control" name="fajr[am_pm]" id="fajrAmPm">
+              <option><%=obj.fajr.am_pm%></option>
               <option>--</option>
             </select>
           </div>
@@ -57,18 +60,21 @@
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="dhuhrHour">HH</label>
             <select class="form-control" name="dhuhr[hour]" id="dhuhrHour">
+              <option><%=obj.dhuhr.hour%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="dhuhrMin">MM</label>
             <select class="form-control" name="dhuhr[min]" id="dhuhrMin">
+              <option><%=obj.dhuhr.min%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12">
             <label for="dhuhrAmPm">AM/PM</label>
             <select class="form-control" name="dhuhr[am_pm]" id="dhuhrAmPm">
+              <option><%=obj.dhuhr.am_pm%></option>
               <option>--</option>
             </select>
           </div>
@@ -86,18 +92,21 @@
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="asrHour">HH</label>
             <select class="form-control" name="asr[hour]" id="asrHour">
+              <option><%=obj.asr.hour%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="asrMin">MM</label>
             <select class="form-control" name="asr[min]" id="asrMin">
+              <option><%=obj.asr.min%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12">
             <label for="asrAmPm">AM/PM</label>
             <select class="form-control" name="asr[am_pm]" id="asrAmPm">
+              <option><%=obj.asr.am_pm%></option>
               <option>--</option>
             </select>
           </div>
@@ -116,18 +125,21 @@
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="maghribHour">HH</label>
             <select class="form-control" name="maghrib[hour]" id="maghribHour">
+              <option><%=obj.maghrib.hour%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="maghribMin">MM</label>
             <select class="form-control" name="maghrib[min]" id="maghribMin">
+              <option><%=obj.maghrib.min%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12">
             <label for="maghribAmPm">AM/PM</label>
             <select class="form-control" name="maghrib[am_pm]" id="maghribAmPm">
+              <option><%=obj.maghrib.am_pm%></option>
               <option>--</option>
             </select>
           </div>
@@ -145,18 +157,21 @@
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="ishaHour">HH</label>
             <select class="form-control" name="isha[hour]" id="ishaHour">
+              <option><%=obj.isha.hour%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="ishaMin">MM</label>
             <select class="form-control" name="isha[min]" id="ishaMin">
+              <option><%=obj.isha.min%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12">
             <label for="ishaAmPm">AM/PM</label>
             <select class="form-control" name="isha[am_pm]" id="ishaAmPm">
+              <option><%=obj.isha.am_pm%></option>
               <option>--</option>
             </select>
           </div>
@@ -174,18 +189,21 @@
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="jummaHour">HH</label>
             <select class="form-control" name="jumma[hour]" id="jummaHour">
+              <option><%=obj.jumma.hour%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="jummaMin">MM</label>
             <select class="form-control" name="jumma[min]" id="jummaMin">
+              <option><%=obj.jumma.min%></option>
               <option>--</option>
             </select>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12">
             <label for="jummaAmPm">AM/PM</label>
             <select class="form-control" name="jumma[am_pm]" id="jummaAmPm">
+              <option><%=obj.jumma.am_pm%></option>
               <option>--</option>
             </select>
           </div>
@@ -205,17 +223,29 @@
         <div class="form-group" style="width: 100%">
           <div class="col-lg-4 col-md-4 col-sm-4">
             <label class="radio-inline" style="font-size: 1.10em; font-weight: bold">
+              <% if(obj.privilege === "Men"){ %>
               <input type="radio" name="privilege" value="Men" checked>Men
+              <%} else{%>
+              <input type="radio" name="privilege" value="Men">Men
+              <%}%>
             </label>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
             <label class="radio-inline" style="font-size: 1.10em; font-weight: bold">
+              <% if(obj.privilege === "Women"){ %>
+              <input type="radio" name="privilege" value="Women" checked>Women
+              <%} else{%>
               <input type="radio" name="privilege" value="Women">Women
+              <%}%>
             </label>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
             <label class="radio-inline" style="font-size: 1.10em; font-weight: bold">
+              <% if(obj.privilege === "Both"){ %>
+              <input type="radio" name="privilege" value="Both" checked>Both
+              <%} else{%>
               <input type="radio" name="privilege" value="Both">Both
+              <%}%>
             </label>
           </div>
         </div> <!-- form group ends -->
@@ -231,48 +261,47 @@
 
       <div class="form-group" style="margin-top: 20px">
         <label for="suburb">Bulding Number/Name:</label>
-        <input type="text" class="form-control" name="location[buildingInfo]" id="suburb" value=""
-          placeholder="Please enter the building name or number here" required>
-      </div>
+        <input type="text" class="form-control" name="location[buildingInfo]" id="suburb" value="<%=obj.location.buildingInfo%>"
+              placeholder="Please enter the building name or number here" required>
+          </div>
 
-      <div class="form-group" style="margin-top: 20px">
-        <label for="suburb">Suburb/Village/Colony</label>
-        <input type="text" class="form-control" name="location[suburb]" id="suburb" value="<%=obj.location.suburb%>"
-          readonly="readonly">
-      </div>
+          <div class="form-group" style="margin-top: 20px">
+            <label for="suburb">Suburb/Village/Colony</label>
+            <input type="text" class="form-control" name="location[suburb]" id="suburb" value="<%=obj.location.suburb%>">
+          </div>
 
-      <!-- City -->
-      <div class="form-group">
-        <label for="city">City/Town</label>
-        <input type="text" class="form-control" name="location[city]" id="city" value="<%=obj.location.city%>"
-          readonly="readonly">
-      </div>
+          <!-- City -->
+          <div class="form-group">
+            <label for="city">City/Town</label>
+            <input type="text" class="form-control" name="location[city]" id="city" value="<%=obj.location.city%>"
+              readonly="readonly">
+          </div>
 
-      <!-- State/Division -->
-      <div class="form-group">
-        <label for="State">State/Division</label>
-        <input type="text" class="form-control" name="location[state]" id="state" value="<%=obj.location.state%>"
-          readonly="readonly">
-      </div>
+          <!-- State/Division -->
+          <div class="form-group">
+            <label for="State">State/Division</label>
+            <input type="text" class="form-control" name="location[state]" id="state" value="<%=obj.location.state%>"
+              readonly="readonly">
+          </div>
 
-      <!-- Country -->
-      <div class="form-group">
-        <label for="country">Country</label>
-        <input type="text" class="form-control" name="location[country]" id="country" value="<%=obj.location.country%>"
-          readonly="readonly">
-      </div>
+          <!-- Country -->
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" name="location[country]" id="country"
+              value="<%=obj.location.country%>" readonly="readonly">
+          </div>
 
-      <input type="hidden" value="" name="api_url" id="api_url" />
-      <!-- <input type="hidden" value="" name="display_name" id="display_name" /> -->
+          <input type="hidden" value="" name="api_url" id="api_url" />
+          <!-- <input type="hidden" value="" name="display_name" id="display_name" /> -->
 
-      <input hidden name="lat" value="<%= obj.lat %>">
-      <input hidden name="lon" value="<%= obj.lon %>">
-      <input hidden name="date" value="<%= obj.date %>">
+          <input hidden name="lat" id="lat" value="<%= obj.lat %>">
+          <input hidden name="lon" id="lon" value="<%= obj.lon %>">
+          <!-- <input name="date" id="date" value="<%= obj.date %>"> -->
 
-      <div style="padding-bottom: 50px;">
-        <!-- <input type="submit" class="btn btn-lg btn-success homepageBtns" value="Submit" id="submitBtn" data-toggle="tooltip" data-placement="top" title="Haven't have finished yet"> -->
-        <input type="submit" class="btn btn-lg btn-success homepageBtns" value="Submit" id="submitBtn">
-      </div>
+          <div style="padding-bottom: 50px;">
+            <!-- <input type="submit" class="btn btn-lg btn-success homepageBtns" value="Submit" id="submitBtn" data-toggle="tooltip" data-placement="top" title="Haven't have finished yet"> -->
+            <input type="submit" class="btn btn-lg btn-success homepageBtns" value="Submit" id="submitBtn">
+          </div>
 
     </form> <!-- actual form ends -->
   </div> <!-- pptimeOpts ends -->
@@ -281,4 +310,4 @@
 
 
 
-<% include ../partials/new_pp/new_pp_footer %>
+<% include ../partials/edit_pp/edit_pp_footer %>
