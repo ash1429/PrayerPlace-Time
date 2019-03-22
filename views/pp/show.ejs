@@ -2,11 +2,11 @@
 
 <div class="container show_HeadContain">
   <h3 class="text_center"><%=obj.location.buildingInfo%>, <%=obj.location.suburb%>, <%=obj.location.city%>, <%=obj.location.state%>, <%=obj.location.country%>.</h3>
-  <h6 class="text_center">Prayer Offered for</h6>
+  <h4 class="text_center">Prayer Offered for</h4>
   <%if(obj.privilege === 'Both'){%>
-    <h6 class="text_center">Men & Women</h6>
+    <h6 class="text_center">Both Men & Women</h6>
   <%}else{%>
-    <h6 class="text_center"><%=obj.privilege%></h6>
+    <h6 class="text_center">Only <%=obj.privilege%></h6>
   <%}%>
 </div>
 
@@ -88,7 +88,7 @@
 
       <div class="col-md-6 col-sm-6">
         <div class="col-md-6 col-sm-6 pull-right" style="">
-          <!-- <a href="" class="btn btn-danger">delete</a> -->
+          <a href="/prayerplace/<%=obj._id%>/delete" class="btn btn-danger">delete</a>
         </div>
       </div>
     </div>

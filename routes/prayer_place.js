@@ -111,4 +111,15 @@ router.post("/:id_pp/edit/posting", auth.user, auth.ownership, (req, res) => {
 
 });
 
+
+router.get("/:id_pp/delete", auth.user, auth.ownership, (req, res) => {
+  Prayerplace.findOneAndRemove({'_id': req.params.id_pp}, (err, obj) => {
+    if(err) res.send(err);
+    else{
+      console.log(obj);
+      res.redirect('/user/' + obj.provider.id);
+    }
+  });
+});
+
 module.exports = router;

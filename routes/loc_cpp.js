@@ -24,7 +24,7 @@ router.get("/gps", (req, res) => {
 });
 
 router.post("/new", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   obj = req.body;
     
   res.render('pp/new', {obj: obj});
