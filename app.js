@@ -37,6 +37,7 @@ var login = require('./routes/login');
 var signup = require('./routes/signup');
 var logout = require('./routes/logout');
 var prayer_place = require('./routes/prayer_place');
+var user = require('./routes/user');
 
 //for checking authorization
 var auth = require('./auth');
@@ -71,6 +72,7 @@ app.use("/", index);
 app.use('/signup', auth.notUser, signup);
 app.use('/login', auth.notUser, login);
 app.use('/logout', auth.user, logout);
+app.use('/user', auth.user, user);
 
 app.use("/loc_fpt", loc_fpt);
 
