@@ -1,0 +1,38 @@
+<% include ./partials/default/header %>
+<div class="container new_HeadContain">
+  <div class="pull-right" style="border: 1px solid black; padding: 20px; ">
+    <h5><strong>Name: </strong> <%=obj.user.username%> </h5>
+    <h5><strong>Email: </strong> <%=obj.user.email%> </h5>
+  </div>
+  <div class="pull-left" style="border: 1px solid black; width: 70%">
+    <div style="">
+      <h3 class="text_center" style="padding: 20px;">Provided Prayer Places:</h3>
+    </div>
+    <div style="width: 80%; margin: 0 auto;">
+      <%if(!obj.pp.length){%>
+      <h4 class="text_center" style="padding: 40px; color: gray">(empty)</h4>
+      <%}else{%>
+      <div>
+        <ul class="list-group">
+          <%obj.pp.forEach(element => {%>
+          <li class="list-group-item" style="text-align:center">
+            <a href="/prayerplace/<%=element._id%>"><%=element.location.buildingInfo%>, <%=element.location.suburb%>,
+              <%=element.location.city%>, <%=element.location.state%>, <%=element.location.country%>.</a>
+          </li>
+          <%});%>
+        </ul>
+      </div>
+
+
+      <%}%> <!-- if else ends -->
+                            
+      </div>
+  </div>
+
+      
+
+      
+</div>
+    
+
+<% include ./partials/default/header %>

@@ -72,7 +72,7 @@ app.use("/", index);
 app.use('/signup', auth.notUser, signup);
 app.use('/login', auth.notUser, login);
 app.use('/logout', auth.user, logout);
-app.use('/user', auth.user, user);
+app.use('/user', user);
 
 app.use("/loc_fpt", loc_fpt);
 
