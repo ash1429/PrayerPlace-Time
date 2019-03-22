@@ -48,6 +48,7 @@ router.post("/", auth.user, (req, res) => {
 });
 
 router.get("/:id_pp", (req, res) => {
+  req.session.returnTo = req.originalUrl;
   Prayerplace.findById(req.params.id_pp, (err, ppData) => {
     if (err) console.log(err);
     else {
@@ -68,9 +69,46 @@ router.get("/:id_pp/edit", auth.user, auth.ownership, (req, res) => {
   });
 });
 
-router.post("/:id_pp/edit", auth.user, auth.ownership, (req, res) => {
-  console.log(req.body);
-  res.send("Sending....");
+router.post("/:id_pp/edit/posting", auth.user, auth.ownership, (req, res) => {
+  // console.log(req.body);
+  
+  var location = req.body.location;
+  var lat = req.body.lat;
+  var lon = req.body.lon;
+
+  var fajr = req.body.fajr;
+  var dhuhr = req.body.dhuhr;
+  var asr = req.body.asr;
+  var maghrib = req.body.maghrib;
+  var isha = req.body.isha;
+  var jumma = req.body.jumma;
+
+  var privilege = req.body.privilege;
+
+  var provider = {
+    id: req.user._id,
+    username: req.user.username,
+    email: req.user.email
+  }
+
+  var editedPrayerPlace = { location, lat, lon, fajr, dhuhr, asr, maghrib, isha, jumma, privilege, provider };
+  console.log("Posted Edited Data\n\n");
+  console.log(editedPrayerPlace);
+  console.log("\n\n");
+  
+  console.log(req.params.id_pp);
+  
+  Prayerplace.findOneAndUpdate({ '_id': req.params.id_pp}, editedPrayerPlace, (err, data)=>{
+    if(err) res.send(err);
+    else{
+      console.log("Edited Data");
+      console.log(data);
+      res.redirect('/prayerplace/' + req.params.id_pp);
+      
+    }
+  });
+
+
 });
 
 module.exports = router;

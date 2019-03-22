@@ -14,6 +14,7 @@ auth.user = function auth(req, res, next) {
 
 
 auth.ownership = function (req, res, next){
+  req.session.returnTo = req.originalUrl;
   Prayerplace.findById(req.params.id_pp, (err, obj) => {
     if (err) res.send(err);
     else if (obj.provider.id) {

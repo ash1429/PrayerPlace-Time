@@ -10,9 +10,17 @@
 
   <!-- <div id="ppTimeOpts" style="display: none"> -->
   <div id="ppTimeOpts" style="display: none;">
-    <form method="POST" action="/prayerplace/<%=obj._id%>/edit" style="max-width: 50%; margin: 0 auto">
+    <form method="POST" action="/prayerplace/<%=obj._id%>/edit/posting" style="max-width: 50%; margin: 0 auto">
       <div>
         <h3 style="text-decoration: underline">Jamat Start Time:</h3>
+        <div class="container-fluid" style="padding: 0">
+          <div class="alert alert-info alert-dismissible text_center" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+            To reset the <strong>Min</strong> and <strong>AM/PM</strong> field please set <strong>HH</strong> to
+            <strong>'--'</strong>
+          </div>
+        </div>
       </div>
       <!-- ====================================== -->
       <!------------------- fajr ------------------->
