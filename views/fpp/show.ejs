@@ -1,0 +1,33 @@
+<% include ../partials/default/header %>
+
+<div class="container show_HeadContain">
+  <div class="" style="border: 1px solid black; width: 100%; margin: 0 auto; padding-bottom: 20px">
+    <div style="">
+      <h3 class="text_center" style="padding: 20px;">Prayer Places:</h3>
+    </div>
+    <div style="width: 80%; margin: 0 auto;">
+      <%if(!pps.length){%>
+      <h4 class="text_center" style="padding: 40px; color: gray">Sorry, we don't have it in our database yet, <a href="/loc_cpp">want to provide?</a></h4>
+      <%}else{%>
+      <div>
+        <ul class="list-group">
+          <%pps.forEach(element => {%>
+          <li class="list-group-item" style="text-align:center">
+            <a href="/prayerplace/<%=element._id%>"><%=element.location.buildingInfo%>, <%=element.location.suburb%>,
+              <%=element.location.city%>, <%=element.location.state%>, <%=element.location.country%>.</a>
+          </li>
+          <%});%>
+        </ul>
+
+        <h6 class="text_center" style=" color: gray">Your desired prayer place is missing, <a href="/loc_cpp">want to create one?</a></h6>
+
+      </div>
+
+
+      <%}%> <!-- if else ends -->
+                              
+        </div>
+    </div>
+</div>
+
+<% include ../partials/default/footer %>

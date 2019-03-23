@@ -31,6 +31,7 @@ mongoose.connect(url, { useNewUrlParser: true }, function (err) {
 //Load routers
 var index = require('./routes/index');
 var loc_fpt = require('./routes/loc_fpt');
+var loc_fpp = require('./routes/loc_fpp');
 var loc_cpp = require('./routes/loc_cpp');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
@@ -74,6 +75,7 @@ app.use('/logout', auth.user, logout);
 app.use('/user', user);
 
 app.use("/loc_fpt", loc_fpt);
+app.use("/loc_fpp", loc_fpp);
 
 app.use("/loc_cpp", auth.user, loc_cpp);
 // app.use("/loc_cpp", loc_cpp);

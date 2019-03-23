@@ -1,7 +1,6 @@
 <script src="/scripts/jquery.js"></script>
 <script src="/scripts/bootstrap.js"></script>
 <script>
-
   var latitude = $('#latForAjaxUrl').text();
   var longitude = $('#lonForAjaxUrl').text();
   console.log(latitude, longitude);
@@ -11,8 +10,9 @@
       url: url_to_get,
       type: 'GET',
       success: function (data) {
-          
-
+        console.log(data);
+        console.log(data.address.suburb);
+        
         if (data.address.city) {
           $('#city').val(data.address.city);
           // $("#city").prop('disabled', true);
@@ -60,7 +60,7 @@
 
       },//success function ends
       error: function (data) {
-        alert('something wrong! Please Try again.');
+        alert('something wrong! Please Try again. in pp new footer');
       },
       timeout: 100000  // in miliseconds
     });//ajax ends

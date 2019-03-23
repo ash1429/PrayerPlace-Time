@@ -1,9 +1,9 @@
 <% include ./partials/default/header %> 
 
 <div class="container">
-    <div class="container new_HeadContain">
+    <div class="container new_HeadContain" style="max-width: 40%">
         <h1 class="text-center">Login</h1>
-        <form action="/login" method="POST">
+        <form action="/login" method="POST" style="min-width: 100%">
             <div class="form-group">
                 <label for="username">Username: </label>
                 <input type="text" class="form-control" name="username" id="username" placeholder="username" autofocus required>
@@ -14,7 +14,7 @@
                 <input type="password" class="form-control" name="password" id="password" placeholder="**********" required>
             </div>
             
-            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit">
+            <input type="submit" class="btn btn-dark btn-lg btn-block" value="Submit" style="overflow: auto; font-size: 1em">
             <p>Don't have an account yet? <a href="/signup">Sign Up</a> </p>
         </form>
     </div>

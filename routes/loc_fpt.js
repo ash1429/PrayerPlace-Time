@@ -13,7 +13,7 @@ router.get("/loc_search_fpt", (req, res) => {
 
 router.get("/loc_search_fpt/show_pt", (req, res) => {
   var obj = req.query;
-  // console.log(obj);
+  // console.log("objects at search_fpt: \n" + obj);
     
   res.render('location/findPt/loc_show',{ obj: obj});
 
@@ -29,7 +29,9 @@ router.get("/loc_gps_fpt", (req, res) => {
 
 router.get("/loc_gps_fpt/show_pt", (req, res) => {
   var obj = req.query;
-  // console.log(obj);
+  // console.log("objects at gps_fpt: \n" + obj);
+  
+  console.log(obj);
   res.render('location/findPt/loc_show', { obj: obj });
 });
 

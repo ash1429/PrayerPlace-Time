@@ -41,7 +41,7 @@ router.get("/find", (req, res) => {
 router.get("/find/confirm", (req, res) => {
 
   obj = { latitude: req.query.lat, longitude: req.query.lon};
-  console.log(obj);
+  // console.log(obj);
   
   res.render('location/createPp/loc_find_confirm',{obj: obj});
 });
