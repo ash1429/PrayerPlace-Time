@@ -5,19 +5,7 @@ var express = require('express'),
   session = require("express-session"),
   app = express();
 
-
-  
-// const url = 'mongodb://localhost:27017/pp';
-// mongoose.connect(url, { useNewUrlParser: true }, function (err) {
-//   if (!err) {
-//     console.log("connected to db");
-//   }
-//   else {
-//     console.log(err);
-//   }
-// });
-
-const url = 'mongodb+srv://hola:hola@cluster0-wn6yj.mongodb.net/test?retryWrites=true';
+const url = process.env.DBURL;
 mongoose.connect(url, { useNewUrlParser: true }, function (err) {
   if (!err) {
     console.log("connected to db");
